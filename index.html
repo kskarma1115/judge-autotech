@@ -254,10 +254,17 @@
   /* Services */
   .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
   .service-card{
+    display:block;text-decoration:none;color:inherit;cursor:pointer;
     background:var(--surface);border:1px solid var(--steel);border-radius:var(--radius);
     padding:30px 26px;transition:transform .22s ease, border-color .22s ease, background .22s ease;
   }
-  .service-card:hover{transform:translateY(-6px);border-color:var(--accent);background:var(--surface-2);}
+  .service-card:hover, .service-card:focus-visible{transform:translateY(-6px);border-color:var(--accent);background:var(--surface-2);}
+  .service-card .service-cta{
+    display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:13px;font-weight:700;
+    color:var(--accent);text-transform:uppercase;letter-spacing:.04em;
+  }
+  .service-card .service-cta svg{width:14px;height:14px;transition:transform .18s ease;}
+  .service-card:hover .service-cta svg{transform:translateX(3px);}
   .service-icon{
     width:52px;height:52px;border-radius:12px;background:var(--accent-soft);
     display:flex;align-items:center;justify-content:center;margin-bottom:20px;
@@ -435,41 +442,47 @@
       </div>
       <div class="services-grid">
 
-        <div class="service-card">
+        <a class="service-card" href="booking.html?service=Routine%20Maintenance">
           <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 1 0-5.66 5.66L2 19l3 3 6.96-7.04a4 4 0 0 0 5.65-5.65l-2.83 2.83-2.12-2.12 2.83-2.83z"/></svg></div>
           <h3>Routine Maintenance</h3>
           <p>Oil changes, fluid checks, filters, and scheduled service to keep small issues from becoming big ones.</p>
-        </div>
+          <span class="service-cta">Book this <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
 
-        <div class="service-card">
+        <a class="service-card" href="booking.html?service=Engine%20Diagnostics">
           <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
           <h3>Engine Diagnostics</h3>
           <p>Check engine light on? We pinpoint the real problem with up-to-date diagnostic tools — not guesswork.</p>
-        </div>
+          <span class="service-cta">Book this <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
 
-        <div class="service-card">
+        <a class="service-card" href="booking.html?service=Brake%20Service">
           <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
           <h3>Brake Service</h3>
           <p>Pads, rotors, calipers, and brake lines — inspected and repaired so you can stop with confidence.</p>
-        </div>
+          <span class="service-cta">Book this <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
 
-        <div class="service-card">
+        <a class="service-card" href="booking.html?service=Suspension%20%26%20Steering">
           <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V9l7-6 7 6v12"/><path d="M9 21v-6h6v6"/></svg></div>
           <h3>Suspension &amp; Steering</h3>
           <p>Struts, shocks, alignment, and steering components for a smoother, safer ride.</p>
-        </div>
+          <span class="service-cta">Book this <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
 
-        <div class="service-card">
+        <a class="service-card" href="booking.html?service=Major%20Repairs">
           <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M5 12V5a2 2 0 0 1 2-2h7l5 5v4"/><path d="M5 15h14M5 19h9"/></svg></div>
           <h3>Major Repairs</h3>
           <p>Engine and transmission work handled properly — a straightforward alternative to the dealership.</p>
-        </div>
+          <span class="service-cta">Book this <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
 
-        <div class="service-card">
+        <a class="service-card" href="booking.html?service=Not%20sure%20%2F%20Other">
           <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l2-6a2 2 0 0 1 2-1.4h10A2 2 0 0 1 19 7l2 6"/><rect x="2" y="13" width="20" height="6" rx="2"/><circle cx="7" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg></div>
           <h3>All Makes &amp; Models</h3>
           <p>Domestic, import, or luxury — if it has an engine, our team has the tools to service it.</p>
-        </div>
+          <span class="service-cta">Book this <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
 
       </div>
     </div>

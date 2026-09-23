@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Book a Service | Judge Autotech</title>
+<meta name="description" content="Request an appointment at Judge Autotech, Markham ON. Tell us about your vehicle and the issue — we'll call to confirm a time.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0d0f12">
+<link rel="canonical" href="https://kskarma1115.github.io/judge-autotech/booking.html">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,3 93,25 93,75 50,97 7,75 7,25' fill='%230d0f12' stroke='%23ff7a1a' stroke-width='5'/%3E%3Ctext x='50' y='66' font-family='Arial,Helvetica,sans-serif' font-weight='800' font-size='42' fill='%23ff7a1a' text-anchor='middle'%3EJA%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0b0d10; --bg-alt:#14171b; --surface:#1b1f25; --surface-2:#20252c;
+    --steel:#343b44; --text:#eef1f4; --text-dim:#9aa3ad;
+    --accent:#ff7a1a; --accent-2:#ffc233; --accent-soft:rgba(255,122,26,0.14);
+    --radius:14px; --maxw:720px;
+    --danger:#ff6b6b; --success:#35d488;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;background:var(--bg);color:var(--text);
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    line-height:1.55;-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,.display{font-family:'Bebas Neue',Impact,'Inter',sans-serif;letter-spacing:0.02em;line-height:1.04;margin:0;}
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+
+  header.site{
+    position:sticky;top:0;z-index:50;background:rgba(11,13,16,0.85);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:960px;margin:0 auto;padding:0 24px;}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .brand svg{width:32px;height:32px;}
+  .brand-text{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:0.04em;color:var(--text);}
+  .brand-text span{color:var(--accent);}
+  .back-link{display:flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:var(--text-dim);text-decoration:none;}
+  .back-link:hover{color:var(--accent);}
+  .nav-call{display:flex;align-items:center;gap:8px;background:var(--accent);color:#141414;padding:9px 16px;border-radius:999px;font-weight:700;font-size:13.5px;text-decoration:none;}
+
+  main{padding:56px 0 100px;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;
+    letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--accent);display:inline-block;}
+  h1{font-size:clamp(38px,7vw,58px);margin-bottom:14px;}
+  .sub{color:var(--text-dim);font-size:16px;max-width:520px;margin-bottom:40px;}
+
+  form{background:var(--surface);border:1px solid var(--steel);border-radius:var(--radius);padding:32px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+  .field{margin-bottom:22px;}
+  .field label{display:block;font-size:13px;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;}
+  .field .hint{font-size:12.5px;color:var(--text-dim);margin-top:6px;}
+  .field .err{font-size:12.5px;color:var(--danger);margin-top:6px;display:none;}
+  .field.invalid .err{display:block;}
+  .field.invalid input, .field.invalid select, .field.invalid textarea{border-color:var(--danger);}
+
+  input, select, textarea{
+    width:100%;background:var(--surface-2);border:1px solid var(--steel);color:var(--text);
+    padding:13px 14px;border-radius:10px;font-size:15px;font-family:inherit;
+    transition:border-color .18s ease, background .18s ease;
+  }
+  input::placeholder, textarea::placeholder{color:#6b7280;}
+  input:focus, select:focus, textarea:focus{outline:none;border-color:var(--accent);background:#242a32;}
+  textarea{resize:vertical;min-height:110px;}
+  select{appearance:none;-webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239aa3ad' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 14px center;padding-right:40px;
+  }
+  input[type="date"]{color-scheme:dark;}
+
+  .section-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin:34px 0 16px;border-top:1px solid rgba(255,255,255,0.07);padding-top:26px;}
+  .section-label:first-of-type{margin-top:0;border-top:none;padding-top:0;}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;
+    padding:16px 26px;border-radius:999px;font-weight:700;font-size:16px;border:none;cursor:pointer;
+    background:var(--accent);color:#141414;box-shadow:0 8px 24px -6px rgba(255,122,26,.55);
+    transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px -6px rgba(255,122,26,.7);}
+  .btn:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none;}
+  .btn .spinner{width:16px;height:16px;border-radius:50%;border:2px solid rgba(20,20,20,.35);border-top-color:#141414;animation:spin .7s linear infinite;display:none;}
+  .btn.loading .spinner{display:inline-block;}
+  .btn.loading .btn-label{opacity:.85;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  .form-note{font-size:12.5px;color:var(--text-dim);text-align:center;margin-top:16px;}
+
+  #formPanel.hidden, #resultPanel.hidden{display:none;}
+  #resultPanel{
+    background:var(--surface);border:1px solid var(--steel);border-radius:var(--radius);
+    padding:44px 32px;text-align:center;
+  }
+  #resultPanel.ok{border-color:rgba(53,212,136,.4);}
+  #resultPanel.fail{border-color:rgba(255,107,107,.4);}
+  .result-icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;}
+  #resultPanel.ok .result-icon{background:rgba(53,212,136,.12);color:var(--success);}
+  #resultPanel.fail .result-icon{background:rgba(255,107,107,.12);color:var(--danger);}
+  .result-icon svg{width:28px;height:28px;}
+  #resultPanel h2{font-size:30px;margin-bottom:10px;}
+  #resultPanel p{color:var(--text-dim);font-size:15px;max-width:420px;margin:0 auto 22px;}
+  .result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .btn-outline{
+    display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;
+    border:2px solid var(--steel);color:var(--text);text-decoration:none;font-weight:700;font-size:14.5px;
+  }
+  .btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+  .btn-outline svg{width:16px;height:16px;}
+
+  @media (max-width:640px){
+    .field-row{grid-template-columns:1fr;gap:0;}
+    form{padding:24px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav">
+    <a href="index.html" class="brand">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,3 93,25 93,75 50,97 7,75 7,25" fill="#0d0f12" stroke="#ff7a1a" stroke-width="5"/><text x="50" y="66" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="42" fill="#ff7a1a" text-anchor="middle">JA</text></svg>
+      <span class="brand-text">JUDGE <span>AUTOTECH</span></span>
+    </a>
+    <a class="back-link" href="index.html">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to site
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="eyebrow">Request an appointment</p>
+    <h1>Tell us about your car.</h1>
+    <p class="sub">Fill this in and we'll call you at the number below to confirm the time and go over anything else we need to know.</p>
+
+    <div id="formPanel">
+      <form id="bookingForm" novalidate>
+
+        <div class="section-label">Your vehicle</div>
+        <div class="field-row">
+          <div class="field" id="field-year">
+            <label for="year">Year</label>
+            <input type="number" id="year" name="year" placeholder="2018" min="1970" max="2027" inputmode="numeric">
+          </div>
+          <div class="field" id="field-make">
+            <label for="make">Make</label>
+            <input type="text" id="make" name="make" placeholder="Honda">
+          </div>
+          <div class="field" id="field-model">
+            <label for="model">Model</label>
+            <input type="text" id="model" name="model" placeholder="Civic">
+          </div>
+        </div>
+
+        <div class="field" id="field-service">
+          <label for="service">Service needed</label>
+          <select id="service" name="service">
+            <option value="">Select a service…</option>
+            <option value="Routine Maintenance">Routine Maintenance</option>
+            <option value="Engine Diagnostics">Engine Diagnostics</option>
+            <option value="Brake Service">Brake Service</option>
+            <option value="Suspension & Steering">Suspension &amp; Steering</option>
+            <option value="Major Repairs">Major Repairs</option>
+            <option value="Not sure / Other">Not sure / Other</option>
+          </select>
+          <div class="err">Please select a service.</div>
+        </div>
+
+        <div class="field" id="field-message">
+          <label for="message">What's going on with it?</label>
+          <textarea id="message" name="message" placeholder="e.g. Grinding noise when braking, started about a week ago…"></textarea>
+        </div>
+
+        <div class="section-label">Your info</div>
+        <div class="field-row" style="grid-template-columns:1fr 1fr;">
+          <div class="field" id="field-name">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Smith" autocomplete="name">
+            <div class="err">Please enter your name.</div>
+          </div>
+          <div class="field" id="field-phone">
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(905) 555-0123" autocomplete="tel" inputmode="tel">
+            <div class="err">Please enter a valid phone number.</div>
+          </div>
+        </div>
+
+        <div class="section-label">Preferred time</div>
+        <div class="field-row" style="grid-template-columns:1fr 1fr;">
+          <div class="field" id="field-date">
+            <label for="preferredDate">Preferred day</label>
+            <input type="date" id="preferredDate" name="preferredDate">
+            <div class="hint">Mon–Fri only — we're closed weekends.</div>
+            <div class="err">Please pick a weekday (Mon–Fri).</div>
+          </div>
+          <div class="field" id="field-time">
+            <label for="preferredTime">Preferred time</label>
+            <select id="preferredTime" name="preferredTime"></select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn" id="submitBtn">
+          <span class="spinner"></span>
+          <span class="btn-label">Request Appointment</span>
+        </button>
+        <p class="form-note">We'll call <span id="phoneEcho">you</span> to confirm — nothing is booked until we speak.</p>
+      </form>
+    </div>
+
+    <div id="resultPanel" class="hidden"></div>
+  </div>
+</main>
+
+<script>
+(function(){
+  "use strict";
+  var API_BASE = 'https://claudecodetest-oe9t.onrender.com';
+
+  // Warm up the backend early (free-plan services spin down after idle).
+  fetch(API_BASE + '/api/business', { mode: 'cors' }).catch(function(){});
+
+  // Pre-fill service from ?service= query param (set by the homepage cards).
+  var params = new URLSearchParams(window.location.search);
+  var presetService = params.get('service');
+  var serviceEl = document.getElementById('service');
+  if (presetService) {
+    var opt = Array.prototype.find.call(serviceEl.options, function(o){ return o.value === presetService; });
+    if (opt) serviceEl.value = presetService;
+  }
+
+  // Build time slots 9:00 AM - 5:00 PM in 30-min steps (shop closes 5:30 PM).
+  var timeEl = document.getElementById('preferredTime');
+  (function buildSlots(){
+    var slots = [];
+    for (var h = 9; h <= 17; h++) {
+      for (var m = 0; m < 60; m += 30) {
+        if (h === 17 && m > 0) continue;
+        var hour12 = h > 12 ? h - 12 : h;
+        var ampm = h >= 12 ? 'PM' : 'AM';
+        var label = hour12 + ':' + (m === 0 ? '00' : m) + ' ' + ampm;
+        slots.push(label);
+      }
+    }
+    slots.forEach(function(s){
+      var o = document.createElement('option');
+      o.value = s; o.textContent = s;
+      timeEl.appendChild(o);
+    });
+  })();
+
+  // Restrict date picker to weekdays only, starting today.
+  var dateEl = document.getElementById('preferredDate');
+  (function(){
+    var today = new Date();
+    dateEl.min = today.toISOString().slice(0,10);
+    var maxD = new Date(today); maxD.setMonth(maxD.getMonth() + 3);
+    dateEl.max = maxD.toISOString().slice(0,10);
+  })();
+  dateEl.addEventListener('change', function(){
+    var field = document.getElementById('field-date');
+    if (!dateEl.value) { field.classList.remove('invalid'); return; }
+    var d = new Date(dateEl.value + 'T00:00:00');
+    var day = d.getDay();
+    if (day === 0 || day === 6) {
+      field.classList.add('invalid');
+      dateEl.value = '';
+    } else {
+      field.classList.remove('invalid');
+    }
+  });
+
+  var phoneEl = document.getElementById('phone');
+  phoneEl.addEventListener('input', function(){
+    document.getElementById('phoneEcho').textContent = phoneEl.value.trim() || 'you';
+  });
+
+  function setInvalid(fieldId, invalid){
+    var el = document.getElementById(fieldId);
+    if (el) el.classList.toggle('invalid', invalid);
+  }
+
+  function validate(data){
+    var valid = true;
+    setInvalid('field-name', false);
+    setInvalid('field-phone', false);
+    setInvalid('field-service', false);
+
+    if (!data.name) { setInvalid('field-name', true); valid = false; }
+    if (!data.phone || !/^[0-9()+\-.\s]{7,20}$/.test(data.phone)) { setInvalid('field-phone', true); valid = false; }
+    if (!data.service) { setInvalid('field-service', true); valid = false; }
+    return valid;
+  }
+
+  var form = document.getElementById('bookingForm');
+  var submitBtn = document.getElementById('submitBtn');
+  var formPanel = document.getElementById('formPanel');
+  var resultPanel = document.getElementById('resultPanel');
+
+  function vehicleString(year, make, model){
+    return [year, make, model].filter(Boolean).join(' ').trim();
+  }
+
+  function showResult(ok, phone){
+    formPanel.classList.add('hidden');
+    resultPanel.classList.remove('hidden');
+    resultPanel.classList.add(ok ? 'ok' : 'fail');
+    if (ok) {
+      resultPanel.innerHTML =
+        '<div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>' +
+        '<h2>Request sent</h2>' +
+        '<p>Thanks — we\'ll call ' + (phone ? phone : 'you') + ' to confirm your appointment and go over anything else we need to know.</p>' +
+        '<div class="result-actions"><a class="btn-outline" href="index.html">Back to home</a></div>';
+    } else {
+      resultPanel.innerHTML =
+        '<div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v5M12 16h.01"/><circle cx="12" cy="12" r="10"/></svg></div>' +
+        '<h2>Couldn\'t send that</h2>' +
+        '<p>Our booking system might be waking up (it can take up to a minute) or having a hiccup. Please try again in a moment, or just call us directly.</p>' +
+        '<div class="result-actions">' +
+          '<a class="btn-outline" href="tel:+19054712672"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call (905) 471-2672</a>' +
+          '<a class="btn-outline" id="retryBtn" href="#">Try again</a>' +
+        '</div>';
+      document.getElementById('retryBtn').addEventListener('click', function(e){
+        e.preventDefault();
+        resultPanel.classList.add('hidden');
+        resultPanel.classList.remove('ok','fail');
+        formPanel.classList.remove('hidden');
+      });
+    }
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    var data = {
+      year: document.getElementById('year').value.trim(),
+      make: document.getElementById('make').value.trim(),
+      model: document.getElementById('model').value.trim(),
+      service: serviceEl.value.trim(),
+      message: document.getElementById('message').value.trim(),
+      name: document.getElementById('name').value.trim(),
+      phone: phoneEl.value.trim(),
+      preferredDate: dateEl.value,
+      preferredTime: timeEl.value
+    };
+
+    if (!validate(data)) return;
+
+    var payload = {
+      name: data.name,
+      phone: data.phone,
+      vehicle: vehicleString(data.year, data.make, data.model),
+      service: data.service,
+      preferredDate: data.preferredDate,
+      preferredTime: data.preferredTime,
+      message: data.message
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.classList.add('loading');
+
+    var controller = new AbortController();
+    var timeout = setTimeout(function(){ controller.abort(); }, 55000);
+
+    fetch(API_BASE + '/api/appointments', {
+      method: 'POST',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal: controller.signal
+    })
+    .then(function(res){
+      clearTimeout(timeout);
+      if (!res.ok) throw new Error('Request failed');
+      return res.json();
+    })
+    .then(function(){
+      showResult(true, data.phone);
+    })
+    .catch(function(){
+      clearTimeout(timeout);
+      showResult(false);
+    })
+    .finally(function(){
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('loading');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
